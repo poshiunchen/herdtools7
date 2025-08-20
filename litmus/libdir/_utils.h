@@ -25,7 +25,6 @@
 /********/
 /* Misc */
 /********/
-
 void seterrlog(FILE *chan) ;
 
 int log_error(const char *fmt,...) ;

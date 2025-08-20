@@ -150,9 +150,11 @@ int RUN(int argc,char **argv,FILE *out) {
 }
 
 #ifdef MAIN
-#ifdef SIFIVE_FREERTOS_ENABLE
+#if defined(SIFIVE_FREERTOS_ENABLE)
 void *sub_main(void *argv) {
 extern int argc;
+#elif defined(__NuttX__)
+int litmux_main(int argc,char **argv) {
 #else
 int main(int argc,char **argv) {
 #endif
