@@ -1278,7 +1278,7 @@ op_t *launch_cached(f_t *f,void *a) {
 /* Random things */
 /*****************/
 
-void perm_prefix_ints(unsigned *st,int *_t, int m, int n) {
+void perm_prefix_ints(st_t *st,int *_t, int m, int n) {
   int k;
   for (k = 0 ; k < m ; k++) {
     int j = k+rand_k(st,m-k);
@@ -1286,11 +1286,11 @@ void perm_prefix_ints(unsigned *st,int *_t, int m, int n) {
   }
 }
 
-void perm_ints(unsigned *st,int *_t, int n) {
+void perm_ints(st_t *st,int *_t, int n) {
   perm_prefix_ints(st, _t,n-1,n) ;
 }
 
-void perm_funs(unsigned *st,f_t *fun[], int n) {
+void perm_funs(st_t *st,f_t *fun[], int n) {
   int k;
   for (k = 0 ; k < n-1 ; k++) {
     int j = k+rand_k(st,n-k);
@@ -1299,7 +1299,7 @@ void perm_funs(unsigned *st,f_t *fun[], int n) {
   }
 }
 
-void perm_ops(unsigned *st,op_t *op[], int n) {
+void perm_ops(st_t *st,op_t *op[], int n) {
   int k;
   for (k = 0 ; k < n-1 ; k++) {
     int j = k+rand_k(st,n-k);
@@ -1308,7 +1308,7 @@ void perm_ops(unsigned *st,op_t *op[], int n) {
   }
 }
 
-void perm_threads(unsigned *st,pthread_t thread[], int n) {
+void perm_threads(st_t *st,pthread_t thread[], int n) {
   int k;
   for (k = 0 ; k < n-1 ; k++) {
     int j = k+rand_k(st,n-k);

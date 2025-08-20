@@ -560,11 +560,13 @@ let dump_c xcode names =
         O.o "" ;
         O.o "@end"
       end else  begin
-        O.o "#ifdef SIFIVE_FREERTOS_ENABLE" ;
+        O.o "#if defined(SIFIVE_FREERTOS_ENABLE)" ;
         O.o "void *sub_main(void *argv) {" ;
         O.o "extern int argc;" ;
-        O.o "#else" ;
-        O.o"int main(int argc,char **argv) {" ;
+        O.o "#elif defined(__NuttX__)" ;
+        O.o "int litmus_main(int argc,char **argv) {" ;
+        O.o "#else";
+        O.o "int main(int argc,char **argv) {" ;
         O.o "#endif" ;
         if is_kvm then O.oi "litmus_init();" ;
         O.oi "run(argc,argv,stdout);" ;
